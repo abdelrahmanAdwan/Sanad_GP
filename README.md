@@ -33,6 +33,7 @@ guidelines/              annotation guidelines, versioned
 data/schema/             JSON schemas: the contract between tracks
 data/templates/          annotation sheet templates
 data/videos/             video metadata (no audio or video files)
+data/segments/           fixed time segments with transcript text
 data/annotations/<name>/ each annotator's labels
 src/collect/             search, screening, metadata          (Data & access)
 src/transcribe/          audio, ASR, segmentation, WER         (Transcripts)
