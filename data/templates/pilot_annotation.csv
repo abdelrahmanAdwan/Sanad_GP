@@ -1,0 +1,2 @@
+segment_id,video_id,start_s,end_s,watch_link,text,q_fact,cw,ncw,opn,none,implicit,flags,note,annotator,guideline_version
+EXAMPLEID01_12000,EXAMPLEID01,12.0,18.4,https://www.youtube.com/watch?v=EXAMPLEID01&t=12s,(segment text here),1,1,0,1,0,0,,hedged claim,abdulrahman,v0

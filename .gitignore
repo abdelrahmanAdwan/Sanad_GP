@@ -1,0 +1,58 @@
+# Generated state (built by scripts/gen_state.py)
+STATE.md
+
+# Personal Claude instructions
+CLAUDE.local.md
+
+# Audio, video and other large media: never commit
+*.mp3
+*.mp4
+*.m4a
+*.wav
+*.webm
+*.opus
+*.ogg
+*.flac
+*.mkv
+*.aac
+data/raw/
+data/audio/
+
+# Model weights and checkpoints
+*.pt
+*.pth
+*.bin
+*.safetensors
+*.ckpt
+*.onnx
+experiments/**/checkpoints/
+wandb/
+mlruns/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.ipynb_checkpoints/
+.pytest_cache/
+.ruff_cache/
+
+# Node
+node_modules/
+.next/
+dist/
+
+# Secrets
+.env
+.env.*
+!.env.example
+*.key
+credentials*.json
+client_secret*.json
+
+# OS and editors
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

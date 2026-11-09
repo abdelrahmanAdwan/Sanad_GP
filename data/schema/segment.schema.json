@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "sanad/segment.schema.json",
+  "title": "Segment",
+  "description": "One fixed time segment of a video (D006). Labels attach to segments. One JSON object per line in data/segments/<topic>.jsonl.",
+  "type": "object",
+  "required": ["segment_id", "video_id", "start_s", "end_s", "text_asr", "asr_system", "segmenter"],
+  "additionalProperties": false,
+  "properties": {
+    "segment_id": {"type": "string", "pattern": "^[A-Za-z0-9_-]{11}_[0-9]+$", "description": "<video_id>_<start in ms>; never changes after annotation starts"},
+    "video_id": {"type": "string", "pattern": "^[A-Za-z0-9_-]{11}$"},
+    "start_s": {"type": "number", "minimum": 0},
+    "end_s": {"type": "number", "minimum": 0},
+    "text_asr": {"type": "string", "description": "Automatic transcript inside the segment"},
+    "asr_system": {"type": "string", "description": "Exact system and version, e.g. whisper-<size>-<version>"},
+    "text_caption": {"type": "string", "description": "YouTube automatic caption text inside the segment, if available"},
+    "text_corrected": {"type": "string", "description": "Manually corrected text, edited inside the same boundaries (test set)"},
+    "segmenter": {"type": "string", "description": "Segmentation method and version"}
+  }
+}

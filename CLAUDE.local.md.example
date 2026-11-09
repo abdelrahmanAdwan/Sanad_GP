@@ -1,0 +1,4 @@
+# Copy this file to CLAUDE.local.md (it is gitignored) and fill in your name.
+I am <name>. My track is <track>.
+My memory file is sessions/<name>/CURRENT.md.
+@sessions/<name>/CURRENT.md

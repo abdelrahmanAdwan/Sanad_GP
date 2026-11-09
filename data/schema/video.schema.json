@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "sanad/video.schema.json",
+  "title": "Video",
+  "description": "One screened video. One JSON object per line in data/videos/<topic>.jsonl.",
+  "type": "object",
+  "required": ["video_id", "topic", "format", "publisher_type", "dialect", "collected_at", "screened"],
+  "additionalProperties": false,
+  "properties": {
+    "video_id": {"type": "string", "pattern": "^[A-Za-z0-9_-]{11}$"},
+    "topic": {"enum": ["diabetes", "hypertension", "nutrition_diets", "herbal_alternative", "cancer"]},
+    "format": {"enum": ["short", "clip"], "description": "short = YouTube Short; clip = 2-3 minute excerpt of a longer video"},
+    "clip_start_s": {"type": "number", "minimum": 0, "description": "Required for clips: start of the excerpt in the source video"},
+    "clip_end_s": {"type": "number", "minimum": 0},
+    "duration_s": {"type": "number", "minimum": 0},
+    "channel_id": {"type": "string"},
+    "publisher_type": {"enum": ["doctor", "official_body", "non_specialist", "unknown"]},
+    "dialect": {"enum": ["msa", "levantine", "egyptian", "gulf", "iraqi", "maghrebi", "sudanese", "mixed", "other", "unknown"]},
+    "search_query": {"type": "string"},
+    "collected_at": {"type": "string", "format": "date"},
+    "screened": {"type": "boolean"},
+    "screen_note": {"type": "string"},
+    "split": {"enum": ["train", "dev", "test", null], "description": "Set when the topic's split is frozen"}
+  },
+  "if": {"properties": {"format": {"const": "clip"}}},
+  "then": {"required": ["clip_start_s", "clip_end_s"]}
+}

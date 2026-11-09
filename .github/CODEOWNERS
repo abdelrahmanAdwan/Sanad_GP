@@ -1,0 +1,17 @@
+# Replace the placeholders with GitHub usernames once tracks are assigned (D014).
+# The last matching line wins.
+
+*                       @coordinator-placeholder
+/docs/                  @coordinator-placeholder
+/paper/                 @coordinator-placeholder
+/data/schema/           @coordinator-placeholder @data-placeholder @transcripts-placeholder @quality-placeholder @experiments-placeholder
+/data/videos/           @data-placeholder
+/src/collect/           @data-placeholder
+/src/transcribe/        @transcripts-placeholder
+/guidelines/            @quality-placeholder
+/src/agreement/         @quality-placeholder
+/src/models/            @experiments-placeholder
+/experiments/           @experiments-placeholder
+/scripts/               @coordinator-placeholder
+/.claude/               @coordinator-placeholder
+/CLAUDE.md              @coordinator-placeholder

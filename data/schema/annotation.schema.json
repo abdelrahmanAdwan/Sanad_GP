@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "sanad/annotation.schema.json",
+  "title": "Annotation",
+  "description": "One annotator's labels for one segment, following the question-based guidelines (v0). Multi-label pending D002. One JSON object per line in data/annotations/<annotator>/<topic>.jsonl.",
+  "type": "object",
+  "required": ["segment_id", "annotator", "guideline_version", "q_fact", "cw", "ncw", "opn", "none"],
+  "additionalProperties": false,
+  "properties": {
+    "segment_id": {"type": "string", "pattern": "^[A-Za-z0-9_-]{11}_[0-9]+$"},
+    "annotator": {"type": "string", "pattern": "^[a-z0-9_]+$"},
+    "guideline_version": {"type": "string", "pattern": "^v[0-9]+(\\.[0-9]+)?$"},
+    "q_fact": {"type": "boolean", "description": "Q1: the segment presents something as fact"},
+    "cw": {"type": "boolean", "description": "Q2: contains a check-worthy claim"},
+    "ncw": {"type": "boolean", "description": "Q3: contains a non-check-worthy factual statement"},
+    "opn": {"type": "boolean", "description": "Q4: expresses an opinion, belief, feeling, prediction or personal experience"},
+    "none": {"type": "boolean", "description": "True only when cw, ncw and opn are all false"},
+    "implicit": {"type": "boolean", "description": "The check-worthy claim is implied (advice, rhetorical question), not stated"},
+    "flags": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {"enum": ["bad_transcript", "bad_boundary", "no_speech", "not_arabic", "spans_segments", "unsure"]}
+    },
+    "note": {"type": "string"},
+    "annotated_at": {"type": "string"}
+  },
+  "allOf": [
+    {"if": {"properties": {"q_fact": {"const": false}}}, "then": {"properties": {"cw": {"const": false}, "ncw": {"const": false}}}},
+    {"if": {"properties": {"none": {"const": true}}}, "then": {"properties": {"cw": {"const": false}, "ncw": {"const": false}, "opn": {"const": false}}}},
+    {"if": {"properties": {"cw": {"const": false}, "ncw": {"const": false}, "opn": {"const": false}}}, "then": {"properties": {"none": {"const": true}}}}
+  ]
+}

@@ -1,0 +1,28 @@
+# Read by scripts/gen_state.py. Status: planned | in_progress | done | dropped.
+# Target dates are suggestions until the team and supervisor confirm them (D001, D008).
+- id: M0
+  name: Decisions needed for the pilot
+  status: in_progress
+  target: 2026-11-12
+  note: Open for the pilot - D011 watch-while-labeling, D012 topic order, D013 tool
+- id: M1
+  name: Guidelines v0 and pilot on 20 videos
+  status: planned
+  target: 2026-11-23
+- id: M2
+  name: Topic 1 complete (collected, transcribed, annotated, split frozen)
+  status: planned
+  target: 2026-12-07
+- id: M3
+  name: Topic 2 complete
+  status: planned
+  target: 2026-12-21
+- id: M4
+  name: Claim-detection experiments
+  status: planned
+  target: 2027-01-05
+- id: M5
+  name: Dataset release (DOI) and paper submission
+  status: planned
+  target: 2027-01-15
+  note: Venue and deadline depend on D001
