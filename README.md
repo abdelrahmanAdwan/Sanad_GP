@@ -14,6 +14,8 @@ The official proposal is the primary reference for scope. Changes to it are reco
 | Know where the project is | Run `python scripts/gen_state.py` and read `STATE.md` |
 | Understand the system | `docs/ARCHITECTURE.md` |
 | See what was decided and what is open | `docs/decisions/` |
+| Collect videos | `docs/collection-protocol.md` (topics, API queries, selection rule) |
+| Know your track and the weekly rhythm | `docs/team-plan.md` |
 | Annotate | `guidelines/` (latest version) |
 | Contribute without conflicts | `CONTRIBUTING.md` |
 | Work with Claude | `CLAUDE.md` and `docs/session-protocol.md` |

@@ -2,7 +2,7 @@
 
 Finds and screens candidate videos for one topic at a time (D008).
 
-**Status:** not started.
+**Status:** not started. Protocol draft: `docs/collection-protocol.md` (D017).
 
 - **Input:** topic name, search terms (MSA and dialects) in `src/collect/queries/<topic>.yaml`.
 - **Output:** `data/videos/<topic>.jsonl`, one record per screened video, valid against `data/schema/video.schema.json`.
