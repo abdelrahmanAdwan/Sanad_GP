@@ -35,5 +35,5 @@ Listen to the 6 primary videos in Drive file 14 for 30 s each (Arabic and audibl
 - When file 12 is complete: export CSV and run `python src/collect/sheet_to_jsonl.py <csv> --collected-at 2026-11-26 --rules pilot --channel-ids data/reports/pilot_channel_ids.csv --out data/videos/pilot.jsonl --extras-out data/reports/pilot_sheet_extras.csv`, then `python scripts/validate_data.py`.
 - The channel name changes: `_vTsmMjUyXg` is "ta3leem360" in sheet 12 but "Amr Samida" in the API today (evidence for D019 gap 3).
 - File 07's video (T6qEGgUKS4M) is not among the 20; row 5 is the same channel, different video.
-- YouTube API Developer Policies may limit how long API data (titles, counts) can be stored; only IDs are committed. Check the policy before the datasheet (unverified).
+- YouTube API Developer Policies may limit how long API data can be stored (unverified). Titles, durations and dates from the API are in Drive file 14 and `pilot6_candidates.csv`; `data/reports/pilot_channel_ids.csv` holds IDs only. Check the policy before the datasheet and delete or refresh if needed.
 - Earlier notes still open: re-verify Almogbel 2021 and Baqain 2023; first deadline (D001); written confirmation of D003 and D005.
