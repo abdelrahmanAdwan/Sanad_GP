@@ -1,33 +1,37 @@
 ---
 person: abdulrahman
-track: TBD (D014)
-updated: 2026-11-10
-task: "Collection protocol and team plan (D017, D018)"
-branch: main
-last_commit: initial
-main_seen: initial
+track: "Coordination + help with collection (proposed in Drive file 09; D014 still open)"
+updated: 2026-11-26
+task: "Drive file 13: my data-collection tasks 1-6"
+branch: ccr-35fdb68e-fbb5ju
+last_commit: see git log
+main_seen: 95b41d6
 ---
 
 ## Done this session
-- Supervisor-meeting outcomes recorded as decisions D001–D009; follow-up and team decisions D010–D016.
-- Repository scaffold: CLAUDE.md, ARCHITECTURE.md, session protocol, state generator, git workflow.
-- Annotation guidelines v0 drafted for the pilot (`guidelines/v0.md`); copy uploaded to the Drive folder as file 04.
-- Readable copy of the decision log and working rules created as Google Doc 05 (id 178EZguZ91kmj4bzNXFfex3wyDJyY_ti9AIhDrLnSv8w), now in the shared Drive folder.
-- Drive status file 00 updated by creating a new 00 (id 1Ax05hDnvBjrOSMnAEuOMDGefLwyk2RKsrsjgzcVFOog, links to 01–05). The old 00 (id 12o-jptP9cWU82Ep4FSCIJXQz8AknatKd9HHBZphMMqE) was renamed "قديم (2 نوفمبر) …" and kept.
-
-- 2026-11-10: Published-study evidence per topic (D012), collection protocol (`docs/collection-protocol.md`, D017), team plan (`docs/team-plan.md`, D018). YouTube API search.list verified as 1 unit but 100 calls/day. Drive: file 06 (Arabic, id 1NhJz-R5zPWT3LI7YeIwLe3i3UvzT1zuja9ZbiDpACc0) created; file 00 re-created with the 06 link (id 1wv8zte4ot71zWPBJ7hPqRBeZ0D2rWPmNKyVjbFIpjiw); the 9-Nov 00 was moved to trash.
+- Read Drive file 13 (my tasks), 12 (pilot sheet), 11, 09 and 07. Abdullah filled and downloaded rows 1–14 (PR #2); rows 15–20 are mine and empty.
+- Task 1: YouTube blocks this container (bot check), so candidates came from a web search on youtube.com plus YouTube oEmbed (title and channel verified). Drive file 14 (id 1GnK82lzG4FVDUHo6C8t70HczmKCMp934z-6qowdBjpk) lists 6 primary picks + 10 reserves, in sheet-12 column order. Copy: `sessions/abdulrahman/pilot6_candidates.csv`. Rule used: first result in search order with the right format, from a channel not already in the pilot, adding publisher or dialect variety. Never by whether the content looks right or wrong.
+- Task 2: `src/collect/sheet_to_jsonl.py` converts sheet 12 to `data/videos/pilot.jsonl` and checks the pilot design. Ran on the 14 rows: 0 errors. Message and daily checklist in `docs/updates/2026-11-26-pilot-schedule.md`.
+- Task 5 prep: `--rules topic` checks the 80-video rule; templates `data/templates/topic_screen_{accepted,rejected}.csv`.
+- New open record D019: the schema lacks caption fields, an accepted/rejected field and a reliable channel key.
 
 ## Next step
-Team meeting: assign track owners (D014), choose the topic order (D012), the pilot tool (D013), answer D011, approve or change D017 and D018, then review guidelines v0. After that: write `src/collect/queries/<topic1>.yaml` and the API search script for the 20-video pilot.
+Open the 6 primary videos in Drive file 14 (about 5 min each). Check duration, date (2020 or later) and that the speech is Arabic and audible. Fill publisher type and dialect by listening; for long videos pick a 2–3 minute part and note start and end seconds. Copy the rows to file 12 rows 15–20 and tell Abdullah.
 
 ## Blocked on
-- GitHub repository owner not chosen (needs GitHub Education for protected branches on a private repo).
-- Drive: the folder is now shared with abedadwan98762024 as Editor, so the Drive connector can create, move and rename files there. The Google Docs connector still returns "Permission denied" on every write (even on files the 2024 account owns), so existing docs cannot be edited in place; reconnecting the Google Docs connector should fix it.
+- Claude cannot open YouTube from the cloud container, so duration, date, dialect and publisher type need a person.
+- No GitHub issue exists for my tasks (only #1, Abdullah's), so there is nowhere to post the handoff comment.
+- Send the schedule message (docs/updates/2026-11-26-pilot-schedule.md) to the team myself; Claude has no team chat.
 
 ## Files touched
-- whole repository (initial scaffold)
+- src/collect/sheet_to_jsonl.py, src/collect/README.md
+- data/templates/topic_screen_accepted.csv, topic_screen_rejected.csv, README.md
+- docs/decisions/D019-video-record-gaps.md, docs/updates/2026-11-26-pilot-schedule.md, docs/ai-use-log.md
+- sessions/abdulrahman/ (this file, log/2026-11-10.md, pilot6_candidates.csv)
 
 ## Notes for next session
-- Could not reopen Almogbel 2021 and Baqain 2023 (pages blocked); Europe PMC rate-limited. Re-verify before the paper cites them.
-- Ask the supervisor whether 15 Jan 2027 is still the first deadline (D001).
-- Get written confirmation of D003 (downloading) and D005 (no ethics approval).
+- When file 12 is complete: export CSV, run `python src/collect/sheet_to_jsonl.py <csv> --collected-at <date> --rules pilot --out data/videos/pilot.jsonl --extras-out data/reports/pilot_sheet_extras.csv`, then `python scripts/validate_data.py`.
+- Hints for Abdullah (unverified, a person decides): row 4 channel "طبيبك اليوم" and the titles of rows 7 and 14 name a doctor, but publisher is "unknown"; row 7 has no search query.
+- File 07's video (T6qEGgUKS4M) is not among rows 1–14. Same channel as row 5, different video.
+- Tasks 3, 4 and 6 are human-only by project rule: write reference transcripts from scratch and annotate alone, without Claude.
+- Earlier notes still open: re-verify Almogbel 2021 and Baqain 2023; first deadline (D001); written confirmation of D003 and D005.

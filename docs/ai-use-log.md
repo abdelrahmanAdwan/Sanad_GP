@@ -6,3 +6,4 @@ ICWSM 2027 requires disclosing generative-AI use for text, tables, graphs, code,
 | --- | --- | --- | --- | --- |
 | 2026-11-02 | Abdulrahman | Claude | Proposal audit, decision report, supervisor meeting prep (Drive files 01–03) | Drive folder |
 | 2026-11-09 | Abdulrahman | Claude | Repository scaffold, decision records, annotation guidelines v0 draft | This repository |
+| 2026-11-26 | Abdulrahman | Claude | Candidate list for 6 pilot videos (web search + oEmbed metadata; a person checks and decides publisher type, dialect and excerpt), sheet-to-JSONL converter, screening templates, schedule message, D019 | Drive file 14; src/collect/; data/templates/; docs/ |
