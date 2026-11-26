@@ -1,0 +1,69 @@
+# Search queries for topic 1: diabetes (YouTube Data API v3, search.list).
+# Status: DRAFT by Claude for Abdulrahman Adwan and Abdullah Nasser to review (Drive file 13, task 5, step 1).
+# Abdullah's own list (Drive file 09, due 21 Nov) is not in the repository yet: merge the two, keep both sources.
+# Rule (docs/collection-protocol.md section 2): MSA + dialects + claim-prone phrasings + institutional phrasings,
+# so that the candidates are not only misinformation and not only one dialect.
+
+topic: diabetes
+defaults:
+  type: video
+  relevanceLanguage: ar
+  publishedAfter: "2020-01-01T00:00:00Z"   # D017 (proposed): 2020 or later
+  maxResults: 50
+  order: relevance
+  videoDuration: [short, medium]            # short < 4 min (Shorts and short clips), medium 4-20 min
+  # regionCode rotation is a suggestion; the region filter is weak, dialect terms matter more.
+  regionCode_rotation: [EG, SA, JO, PS, IQ, MA, DZ, SD, AE, LB]
+
+# Already used for the 14 pilot videos (sheet 12, column "كلمة البحث"):
+pilot_used: [سكري, علاج السكري, مسببات السكر, مرض السكري, داء السكري, السكري النوع الثاني, علاج مرض السكري]
+
+queries:
+  msa:
+    - مرض السكري
+    - داء السكري
+    - علاج السكري
+    - السكري النوع الثاني
+    - السكري النوع الأول
+    - أعراض السكري
+    - مضاعفات السكري
+    - مقاومة الأنسولين
+    - السكر التراكمي
+    - القدم السكرية
+    - سكري الحمل
+  dialect:            # "السكر" alone means diabetes in Egyptian and Levantine speech
+    - مرض السكر
+    - مريض سكر
+    - علاج السكر
+    - ارتفاع السكر
+    - نزول السكر
+    - أكل مريض السكر
+    - شو بياكل مريض السكري    # Levantine
+    - إيش ياكل مريض السكر      # Gulf
+    - إزاي أنزل السكر          # Egyptian
+    - كيفاش نعالج السكر        # Maghrebi
+    - دوا السكر
+  claim_prone:        # phrasings found in misleading titles (collection protocol section 2); used to sample, not to select
+    - علاج السكري نهائيا
+    - علاج السكري بدون أدوية
+    - علاج السكر بالأعشاب
+    - وصفة طبيعية للسكر
+    - خلطة للسكر
+    - القضاء على السكري
+    - التخلص من السكري
+    - عشبة تعالج السكر
+  institutional:      # so that sound content is also sampled (needs >= 15 doctor/official videos per 80)
+    - وزارة الصحة السكري
+    - توعية مرض السكري
+    - نصائح طبيب لمرضى السكري
+    - اليوم العالمي للسكري
+    - جمعية السكري
+
+# Budget (assumption): 35 queries x 2 durations = 70 search.list calls, inside the 100-calls-per-day limit
+# the protocol records for one project. Add order=viewCount for 5 queries to fill the "most viewed" third.
+
+# Review checklist for Abdulrahman and Abdullah (before 2 Dec):
+# - Does every group above have terms people really type? Add what you see in YouTube's search box.
+# - Are Iraqi, Sudanese and Maghrebi spellings covered?
+# - Is anything here a phrase that only finds one channel? Drop it.
+# - Record for each run: query, regionCode, order, date, hits returned (src/collect/collection-log.md).

@@ -9,29 +9,31 @@ main_seen: 95b41d6
 ---
 
 ## Done this session
-- Read Drive file 13 (my tasks), 12 (pilot sheet), 11, 09 and 07. Abdullah filled and downloaded rows 1–14 (PR #2); rows 15–20 are mine and empty.
-- Task 1: YouTube blocks this container (bot check), so candidates came from a web search on youtube.com plus YouTube oEmbed (title and channel verified). Drive file 14 (id 1GnK82lzG4FVDUHo6C8t70HczmKCMp934z-6qowdBjpk) lists 6 primary picks + 10 reserves, in sheet-12 column order. Copy: `sessions/abdulrahman/pilot6_candidates.csv`. Rule used: first result in search order with the right format, from a channel not already in the pilot, adding publisher or dialect variety. Never by whether the content looks right or wrong.
-- Task 2: `src/collect/sheet_to_jsonl.py` converts sheet 12 to `data/videos/pilot.jsonl` and checks the pilot design. Ran on the 14 rows: 0 errors. Message and daily checklist in `docs/updates/2026-11-26-pilot-schedule.md`.
-- Task 5 prep: `--rules topic` checks the 80-video rule; templates `data/templates/topic_screen_{accepted,rejected}.csv`.
-- New open record D019: the schema lacks caption fields, an accepted/rejected field and a reliable channel key.
+- Read Drive files 13 (my tasks), 12, 11, 09 and 07. Abdullah filled and downloaded rows 1–14 (PR #2).
+- Task 1 done by Claude at my request, for me to verify: 6 videos picked with the YouTube Data API (key in the environment; calls logged in `src/collect/collection-log.md`). Paste-ready rows for file 12 rows 15–20, with 12 reserves, in Drive file 14 (id 1BufV7j4JOP8hrIyIAIfANvJScvOzS79FvxUvqNtgDiQ). Copy: `sessions/abdulrahman/pilot6_candidates.csv`. Duration, date and channel come from the API. Publisher type is from channel names. Dialect is from descriptions or a weak guess. Excerpts: chapters for -l4KKQEaoHE, whole video for MR1U8hidTJ0, default 60–210 s for bdfLAhrP8mk. Nobody has listened yet.
+- The first round of picks (web search + oEmbed) was replaced: 3 of those 6 broke the duration or date rule once the API showed real values.
+- With the 6 rows, the 20-video pilot passes the converter's design check (10 Shorts / 10 clips; 14 + 2 + 2 + 2; 1 official, 2 non-specialist).
+- Task 2: converter `src/collect/sheet_to_jsonl.py` (+ `--channel-ids`), `data/reports/pilot_channel_ids.csv` (20 videos, 20 channels). Messages for the team and for Abdullah in `docs/updates/2026-11-26-pilot-schedule.md`. Scheduled task trig_01TNnGhGWi91f5TqWTfXpwaJ runs a daily check at 07:13 UTC until 3 Dec and builds `data/videos/pilot.jsonl` once file 12 is complete.
+- Task 5 prep: draft `src/collect/queries/diabetes.yaml` to review with Abdullah; `--rules topic` check; screening templates in `data/templates/`.
+- D019 (open): schema lacks caption fields, an accepted/rejected flag and (now partly solved by `--channel-ids`) a stable channel key.
 
 ## Next step
-Open the 6 primary videos in Drive file 14 (about 5 min each). Check duration, date (2020 or later) and that the speech is Arabic and audible. Fill publisher type and dialect by listening; for long videos pick a 2–3 minute part and note start and end seconds. Copy the rows to file 12 rows 15–20 and tell Abdullah.
+Listen to the 6 primary videos in Drive file 14 for 30 s each (Arabic and audible? dialect right? excerpt on topic?). Fix any value, paste columns A–O into file 12 columns C–Q, rows 15–20. Send Abdullah the message in docs/updates/2026-11-26-pilot-schedule.md.
 
 ## Blocked on
-- Claude cannot open YouTube from the cloud container, so duration, date, dialect and publisher type need a person.
+- Claude cannot hear audio or open YouTube pages from the cloud container: audibility, dialect and excerpt choice need a person.
 - No GitHub issue exists for my tasks (only #1, Abdullah's), so there is nowhere to post the handoff comment.
-- Send the schedule message (docs/updates/2026-11-26-pilot-schedule.md) to the team myself; Claude has no team chat.
+- Tasks 3, 4 and 6 wait on others (audio clips from Mohammad on 28 Nov; segments and annotation files from Shaath) and are human work by design.
 
 ## Files touched
-- src/collect/sheet_to_jsonl.py, src/collect/README.md
-- data/templates/topic_screen_accepted.csv, topic_screen_rejected.csv, README.md
+- src/collect/sheet_to_jsonl.py, src/collect/README.md, src/collect/collection-log.md, src/collect/queries/diabetes.yaml
+- data/reports/pilot_channel_ids.csv; data/templates/topic_screen_{accepted,rejected}.csv, README.md
 - docs/decisions/D019-video-record-gaps.md, docs/updates/2026-11-26-pilot-schedule.md, docs/ai-use-log.md
 - sessions/abdulrahman/ (this file, log/2026-11-10.md, pilot6_candidates.csv)
 
 ## Notes for next session
-- When file 12 is complete: export CSV, run `python src/collect/sheet_to_jsonl.py <csv> --collected-at <date> --rules pilot --out data/videos/pilot.jsonl --extras-out data/reports/pilot_sheet_extras.csv`, then `python scripts/validate_data.py`.
-- Hints for Abdullah (unverified, a person decides): row 4 channel "طبيبك اليوم" and the titles of rows 7 and 14 name a doctor, but publisher is "unknown"; row 7 has no search query.
-- File 07's video (T6qEGgUKS4M) is not among rows 1–14. Same channel as row 5, different video.
-- Tasks 3, 4 and 6 are human-only by project rule: write reference transcripts from scratch and annotate alone, without Claude.
+- When file 12 is complete: export CSV and run `python src/collect/sheet_to_jsonl.py <csv> --collected-at 2026-11-26 --rules pilot --channel-ids data/reports/pilot_channel_ids.csv --out data/videos/pilot.jsonl --extras-out data/reports/pilot_sheet_extras.csv`, then `python scripts/validate_data.py`.
+- The channel name changes: `_vTsmMjUyXg` is "ta3leem360" in sheet 12 but "Amr Samida" in the API today (evidence for D019 gap 3).
+- File 07's video (T6qEGgUKS4M) is not among the 20; row 5 is the same channel, different video.
+- YouTube API Developer Policies may limit how long API data (titles, counts) can be stored; only IDs are committed. Check the policy before the datasheet (unverified).
 - Earlier notes still open: re-verify Almogbel 2021 and Baqain 2023; first deadline (D001); written confirmation of D003 and D005.

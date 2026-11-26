@@ -286,6 +286,11 @@ def main(argv: list[str]) -> int:
         "--collected-at", required=True, help="date the videos were selected, YYYY-MM-DD"
     )
     ap.add_argument("--rules", choices=["pilot", "topic", "none"], default="none")
+    ap.add_argument(
+        "--channel-ids",
+        type=Path,
+        help="CSV with video_id,channel_id (for example data/reports/pilot_channel_ids.csv)",
+    )
     ap.add_argument("--out", type=Path, help="write records here (.jsonl); omit to check only")
     ap.add_argument(
         "--extras-out", type=Path, help="write sheet columns the schema lacks here (.csv)"
@@ -303,6 +308,11 @@ def main(argv: list[str]) -> int:
     if missing:
         sys.exit(f"columns not found in {args.csv}: {missing}")
 
+    channel_ids: dict[str, str] = {}
+    if args.channel_ids:
+        with args.channel_ids.open(encoding="utf-8-sig", newline="") as f:
+            channel_ids = {r["video_id"]: r["channel_id"] for r in csv.DictReader(f)}
+
     good: list[tuple[dict, dict]] = []
     errors = 0
     empty = []
@@ -312,6 +322,8 @@ def main(argv: list[str]) -> int:
             empty.append(row.get(COL["row"]) or str(i))
             continue
         rec, errs = convert(row, args.collected_at)
+        if rec is not None and rec["video_id"] in channel_ids:
+            rec["channel_id"] = channel_ids[rec["video_id"]]
         if rec is not None:
             errs += [
                 f"schema: {'/'.join(map(str, e.path)) or '(record)'}: {e.message}"

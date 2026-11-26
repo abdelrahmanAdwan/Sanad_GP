@@ -18,11 +18,23 @@ Source: Drive file 13, task 2 (prepared with Claude). The plan in Drive file 09 
 > كل يوم بشوف السطر اللي موعده اليوم، وإذا في شي عالق بسأل صاحبه شو محتاج. واجتماعاتنا: الاثنين (شو بيخلص كل واحد هالأسبوع) والخميس (شو تعطّل)، 30 دقيقة.
 > تذكير: كل واحد بيصنّف لحاله، بدون Claude، وما حدا يفتح ملف غيره قبل ما الكل يسلّم.
 
+## Message to Abdullah (ready to paste)
+
+> هاي روابط فيديوهاتي الستة للتجربة، فيك تنزّلهم هلقيت مع الـ 14 بنفس أمر الخطوة 6 بالملف 11:
+> https://www.youtube.com/shorts/Lpl_8P_bcuE
+> https://www.youtube.com/watch?v=-l4KKQEaoHE
+> https://www.youtube.com/shorts/5xbnkPueKiU
+> https://www.youtube.com/watch?v=MR1U8hidTJ0
+> https://www.youtube.com/shorts/lw0hr1PM7aw
+> https://www.youtube.com/watch?v=bdfLAhrP8mk
+> الأسطر 15–20 بالملف 12 بعبّيها اليوم بعد ما أتأكد منها. إذا واحد ما زبط ببدّله باحتياط من الملف 14 وببعتلك رابطه.
+> وكمان: السطر 7 ما إله كلمة بحث، والسطر 4 اسم قناته «طبيبك اليوم» بس نوع الناشر «غير معروف»، شوفهم لو سمحت.
+
 ## Daily check (Abdulrahman Adwan)
 
 | Date | Done when | Owner | Status |
 | --- | --- | --- | --- |
-| 26 Nov | 6 videos in rows 15–20 of file 12; 20 audio files on the server; brown columns filled | Abdulrahman A., Abdullah | 14 of 20 downloaded (PR #2); 6 rows pending |
+| 26 Nov | 6 videos in rows 15–20 of file 12; 20 audio files on the server; brown columns filled | Abdulrahman A., Abdullah | 14 of 20 downloaded (PR #2); 6 picked (Drive file 14), waiting for Abdulrahman's check and paste |
 | 28 Nov | Each person handed in 8 minutes of reference transcripts | Mohammad, all | not started |
 | 28 Nov | Segments for 20 videos; 5 empty annotation files sent | Mohammad, Shaath | not started |
 | 28 Nov – 2 Dec | 5 annotation files with Shaath | all | not started |
